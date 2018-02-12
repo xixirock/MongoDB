@@ -1,17 +1,21 @@
 body {
     background-image: url("/assets/images/background.jpg");
     padding-top: 70px;
+    font-family: 'Merriweather', serif;
 }
 
 .deleteNote {
-	display: inline-block;
+    display: inline-block;
+    font-family: 'Merriweather', serif;
 }
 
 .previousNotes {
     display: inline-block;
-    width: 90%
+    width: 90%;
+    font-family: 'Merriweather', serif;
 }
 
 #scrape {
     margin: 8px 0px;
+    font-family: 'Merriweather', serif;
 }
