@@ -3,6 +3,16 @@ $(document).ready(function () {
     // initialize modal
     $('.modal').modal();
 
+    // initialize masonry
+    var $grid = $('.article-grid').masonry({
+        itemSelector: '.article-item',
+        columnWidth: '.article-sizer',
+        percentPosition: true,
+        initLayout: true,
+    });
+
+    $grid.masonry();
+    
     // Save an article
     $(document).on("click", ".btn-save", function (e) {
         e.preventDefault();
