@@ -58,3 +58,34 @@ app.get("/all", function(req,res){
     
 });
 
+//scrap data and place it in mongodb
+app.get("/scrap", function(res, req){
+    request("https://news.google.com/news/", function(error, response, html){
+   // Load the html body from request into cheerio
+   var $ = cheerio.load(html);
+   // For each element with a "title" class
+   $(".article-title").each(function(i, element) {
+     // Crete an empty object
+     var articleObj = {};
+
+     // Save the title and href of each item in the current element
+     articleObj.title = $(element).attr("title");
+     articleObj.link = $(element).attr("href");
+
+     // Insert the data in the articles collection
+     db.Article
+    //console.log(articleObj)
+     .create(articleObj)
+     .then(function(dbArticle) {
+     })
+     .catch(function(err) {
+       // If an error occurred, send it to the client
+       // console.log(err)
+       // res.json(err);
+     });
+
+    });
+
+   res.redirect("/");
+    })
+})
